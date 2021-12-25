@@ -13,7 +13,7 @@ odoo.define('product_pricelist_display.ProductPricelistDisplay', function (requi
 
         _renderView: function () {
             var self = this;
-            if(this.state.model == 'product.template'){
+            if(this.state.model == 'product.template' ){
                 return this._super.apply(this, arguments).then(function(){
                     return Promise.all([self._renderPricelistColumns()]);
                 }).then(function(){
