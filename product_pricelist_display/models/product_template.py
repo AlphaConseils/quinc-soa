@@ -65,3 +65,9 @@ class ProdcutTemplate(models.Model):
     def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
         fields = list(filter(lambda f: f in self._fields.keys(), fields))
         return super(ProdcutTemplate, self).read_group(domain, fields, groupby, offset, limit, orderby, lazy)
+
+    def _update_cache(self, values, validate=True):
+        values = values.items()
+        values = [val for val in values if val[0] in self._fields]
+        values = dict(values)
+        super(ProdcutTemplate, self)._update_cache(values, validate)
